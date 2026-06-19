@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>捕鱼达人 · 杂志专题介绍 — cn-fishmaster.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #e4efea;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1f3a34;
+            padding: 24px 16px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .magazine {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* 首页横幅 hero */
+        .hero {
+            background: linear-gradient(145deg, #0b4f48 0%, #1c7b6a 100%);
+            border-radius: 36px 36px 24px 24px;
+            padding: 48px 28px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 14px 30px rgba(8, 56, 48, 0.28);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -30%;
+            width: 80%;
+            height: 120%;
+            background: radial-gradient(circle at 40% 30%, rgba(150, 224, 210, 0.20) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: #d7f4ec;
+            text-shadow: 0 4px 8px rgba(0, 20, 16, 0.3);
+            position: relative;
+            z-index: 2;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+        .hero p {
+            color: #caefe6;
+            font-size: 1.2rem;
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+            font-weight: 350;
+            background: rgba(12, 60, 50, 0.30);
+            backdrop-filter: blur(1px);
+            display: inline-block;
+            padding: 8px 20px 8px 18px;
+            border-radius: 50px;
+            border-left: 4px solid #8fd6c5;
+        }
+
+        /* 背景说明卡 — 杂志网格风格 */
+        .context-card {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 28px;
+            padding: 28px 30px;
+            margin-bottom: 32px;
+            box-shadow: 0 8px 18px rgba(24, 70, 60, 0.08);
+            border: 1px solid #b8d9cf;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            align-items: flex-start;
+            transition: box-shadow 0.2s;
+        }
+        .context-card:hover {
+            box-shadow: 0 12px 28px rgba(10, 80, 66, 0.12);
+        }
+        .context-card .label {
+            flex: 0 0 90px;
+            font-size: 0.9rem;
+            color: #2f7163;
+            font-weight: 500;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            background: #d7efe7;
+            padding: 6px 12px;
+            border-radius: 60px;
+            text-align: center;
+            align-self: flex-start;
+        }
+        .context-card .text-block {
+            flex: 1;
+            min-width: 220px;
+        }
+        .context-card .text-block p {
+            margin-bottom: 12px;
+            font-size: 1.04rem;
+            color: #1f3f39;
+        }
+        .context-card .text-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三段自然介绍 —— 网格卡片 */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .intro-card {
+            background: #f3faf7;
+            padding: 28px 22px 24px;
+            border-radius: 28px;
+            border: 1px solid #bfded2;
+            box-shadow: 0 4px 12px rgba(28, 80, 66, 0.04);
+            transition: transform 0.15s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .intro-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(18, 80, 64, 0.12);
+            border-color: #7fc0ae;
+        }
+        .intro-card .card-number {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #4a9b86;
+            margin-bottom: 4px;
+            line-height: 1;
+            background: #d4efe4;
+            width: 36px;
+            height: 36px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .intro-card h3 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #1f5245;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+        .intro-card p {
+            font-size: 0.98rem;
+            color: #1f3f37;
+            margin-bottom: 6px;
+            flex: 1;
+        }
+        .intro-card .meta-tag {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #3e7b6b;
+            border-top: 1px solid #c1dbd0;
+            padding-top: 14px;
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .meta-tag span {
+            background: #daefe6;
+            padding: 3px 14px;
+            border-radius: 30px;
+        }
+
+        /* 摘录 / 说明块 (FAQ风格) */
+        .faq-mini {
+            background: #dff1ea;
+            border-radius: 28px;
+            padding: 20px 28px 24px;
+            margin-bottom: 38px;
+            border-left: 12px solid #1f7c68;
+            box-shadow: 0 6px 12px rgba(8, 54, 42, 0.06);
+        }
+        .faq-mini h4 {
+            font-weight: 500;
+            font-size: 1.2rem;
+            color: #053e32;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .faq-mini p {
+            color: #1b453a;
+            margin-bottom: 8px;
+            font-size: 1.02rem;
+        }
+        .faq-mini p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 页尾访问提示 */
+        .footer-note {
+            margin-top: 16px;
+            padding: 24px 24px 20px;
+            background: #d3e9df;
+            border-radius: 60px 60px 30px 30px;
+            text-align: center;
+            font-size: 1rem;
+            border: 1px solid #aacfc0;
+            color: #14473c;
+            line-height: 1.8;
+        }
+        .footer-note a {
+            color: #115546;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 2px solid #419f86;
+            padding-bottom: 1px;
+            transition: 0.15s;
+        }
+        .footer-note a:hover {
+            background: #419f86;
+            color: #fff;
+            border-bottom-color: #fff;
+            padding: 0 6px;
+            border-radius: 20px;
+        }
+        .footer-note .foot-sub {
+            display: block;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #2b695a;
+            opacity: 0.75;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 680px) {
+            body {
+                padding: 16px 12px;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+                padding: 6px 16px;
+            }
+            .context-card {
+                padding: 20px 18px;
+                flex-direction: column;
+            }
+            .context-card .label {
+                align-self: flex-start;
+                flex-basis: auto;
+            }
+            .intro-grid {
+                gap: 16px;
+            }
+            .faq-mini {
+                padding: 18px 18px 20px;
+                border-left-width: 8px;
+            }
+            .footer-note {
+                padding: 20px 16px 18px;
+                border-radius: 40px 40px 24px 24px;
+            }
+        }
+        @media (max-width: 440px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .hero {
+                padding: 32px 18px 28px;
+            }
+            .intro-card .card-number {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="magazine">
+
+        <!-- 首页横幅 hero -->
+        <div class="hero">
+            <h1>捕鱼达人 · 在水域之间</h1>
+            <p>站点全景 · 可信与自然</p>
+        </div>
+
+        <!-- 背景说明 (杂志式) -->
+        <div class="context-card">
+            <span class="label">背景聚焦</span>
+            <div class="text-block">
+                <p><strong>cn-fishmaster.com</strong> 并非一个空泛的娱乐标签，而是一个以「捕鱼达人」为原点展开的信息角落。它经由长期维护与内容累积，逐渐形成面向休闲、策略与水域文化的专题站点。整个页面的设计意图在于呈现一份值得了解的档案，而非一次性的宣传。</p>
+                <p>版块里既有对经典捕鱼玩法的回望，也收纳了与自然水域、钓捕文化相关的随笔。所有材料都来自可溯源的分享，并保持克制、平和的语调。我们不使用浮夸的标语，只希望来访者能感到内容本身的分量。</p>
+            </div>
+        </div>
+
+        <!-- 三段自然介绍 (卡片网格) -->
+        <div class="intro-grid">
+            <div class="intro-card">
+                <div class="card-number">⛵</div>
+                <h3>站点叙事</h3>
+                <p>每一篇介绍或说明都尽量还原真实的游戏与自然场景，不从流俗。从工具选择到海洋生态的细碎观察，所有文字都经过重新组织，以匹配休闲爱好者的阅读习惯。</p>
+                <div class="meta-tag"><span>渔获笔记</span><span>玩法溯源</span></div>
+            </div>
+            <div class="intro-card">
+                <div class="card-number">🌿</div>
+                <h3>可信之处</h3>
+                <p>站点内容没有隐藏的推广链接或诱导行为；引用数据均来自公开资料或长期使用体验。我们相信，透明的信息比华丽的承诺更能建立信任——这也是「捕鱼达人」社区的共识。</p>
+                <div class="meta-tag"><span>无诱饵声明</span><span>引用可查</span></div>
+            </div>
+            <div class="intro-card">
+                <div class="card-number">🎣</div>
+                <h3>日常场景</h3>
+                <p>无论是模拟捕捞的电子时刻，还是近岸垂钓的真实休憩，站点都试图用温和的笔触记录下来。每一段说明都倾向于提供场景感，而非教条式的指南。</p>
+                <div class="meta-tag"><span>电子与自然</span><span>慢节奏</span></div>
+            </div>
+        </div>
+
+        <!-- FAQ摘要 / 额外说明 -->
+        <div class="faq-mini">
+            <h4>📌 常见想法的背后</h4>
+            <p><strong>Q：这里是否只是一个游戏介绍页？</strong> 不完全是。除了玩法说明，还有关于水域保护、渔具演变以及不同文化中的「捕鱼」意象。内容有一定广度，但始终围绕「捕鱼达人」的核心气质。</p>
+            <p><strong>Q：信息会不会很陈旧？</strong> 站点会间歇更新，旧文章也会保留并做少量修订，保持历史脉络。如果你发现某些细节有变化，那多半是版本迭代或生态认知更新。</p>
+        </div>
+
+        <!-- 页尾访问提示 —— a标签自然嵌入句子 -->
+        <div class="footer-note">
+            如果你对休闲水域或模拟捕捞的话题感兴趣，不妨花几分钟逛逛 <a href="https://cn-fishmaster.com">捕鱼达人</a> ——那里没有打扰式的弹窗，只有沉静的图文记录。<br>
+            <span class="foot-sub">基于真实内容 · 无诱导 &nbsp;|&nbsp; 杂志式索引</span>
+        </div>
+
+    </div>
+</body>
+</html>

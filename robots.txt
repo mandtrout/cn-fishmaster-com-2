@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mandtrout.github.io/cn-fishmaster-com-2/sitemap.xml
